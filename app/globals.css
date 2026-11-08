@@ -1,0 +1,85 @@
+@import "tailwindcss";
+
+@theme {
+  --color-deep: #4A1F0F;
+  --color-brown: #6B3321;
+  --color-milk: #8F5B45;
+  --color-caramel: #E8C9A8;
+  --color-cream: #F9E9D8;
+  --color-blush: #E7C3B2;
+  --color-offwhite: #FFF7ED;
+  --color-whatsapp: #25D366;
+
+  --font-display: var(--font-lilita), "Arial Rounded MT Bold", system-ui, sans-serif;
+  --font-heading: var(--font-fredoka), "Arial Rounded MT Bold", system-ui, sans-serif;
+  --font-body: var(--font-poppins), system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-hand: var(--font-caveat), "Bradley Hand", cursive;
+
+  --shadow-soft: 0 10px 30px -12px rgb(74 31 15 / 0.25);
+  --shadow-card: 0 2px 6px rgb(74 31 15 / 0.06), 0 18px 40px -20px rgb(74 31 15 / 0.35);
+  --shadow-lift: 0 4px 10px rgb(74 31 15 / 0.08), 0 30px 60px -24px rgb(74 31 15 / 0.45);
+
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-float-slow: float 9s ease-in-out infinite;
+  --animate-pulse-ring: pulse-ring 2.2s cubic-bezier(0.2, 0.6, 0.4, 1) infinite;
+  --animate-spin-slow: spin 18s linear infinite;
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0) rotate(var(--r, 0deg)); }
+    50% { transform: translateY(-14px) rotate(calc(var(--r, 0deg) + 4deg)); }
+  }
+  @keyframes pulse-ring {
+    0% { transform: scale(1); opacity: 0.55; }
+    80%, 100% { transform: scale(1.75); opacity: 0; }
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--color-cream);
+  color: var(--color-brown);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+section[id] {
+  scroll-margin-top: 84px;
+}
+
+::selection {
+  background: var(--color-blush);
+  color: var(--color-deep);
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-milk);
+  outline-offset: 3px;
+  border-radius: 10px;
+}
+
+/* subtle paper grain for warmth */
+.grain {
+  background-image: radial-gradient(rgb(143 91 69 / 0.07) 1px, transparent 1px);
+  background-size: 18px 18px;
+}
+
+
+.text-balance { text-wrap: balance; }
+
+/* custom scrollbar for chip rows */
+.no-scrollbar { scrollbar-width: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
